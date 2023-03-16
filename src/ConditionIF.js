@@ -10,11 +10,10 @@ function TaskNotOk() {
 
 function TaskVerification(props) {
   const isOk = props.isOk;
-  return (
-    <>
-      {isOk ? <TaskOk /> : <TaskNotOk />}
-    </>
-  )
+  if (isOk) {
+    return < TaskOk />;
+  }
+  return <TaskNotOk />
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
