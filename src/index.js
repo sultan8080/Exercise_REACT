@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-function Football() {
-  const shoot = (a, b) => {
-    alert(b.type);
-    /*
-    'b' represents the React event that triggered the function.
-    In this case, the 'click' event
-    */
-  }
-
-  return (
-    <button onClick={(event) => shoot("Goal!", event)}>Take the shot!</button>
-  );
+function TaskOk() {
+  return <h1> DONE PERFECTLY </h1>
 }
 
+function TaskNotOk() {
+  return <h1> NOT FINISHED PERFECTLY </h1>
+}
+
+function TaskVerification(props) {
+  const isOk = props.isOk;
+  if (isOk) {
+    return < TaskOk />;
+  }
+  return <TaskNotOk />
+}
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Football />);
+
+// root.render(<TaskVerification isOk={false} />);
+root.render(<TaskVerification isOk={true} />);
