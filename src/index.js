@@ -1,26 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+function Fruits(props) {
+  return <li> Je suis un {props.nom}</li>
+}
 
-function AnimalListes(props) {
-  const myAnim = props.myAnim;
+function FruitsBaskets() {
+  let fruits = ["Apple", "Orange", "Plum", "banana", "Pinappel"];
 
   return (
     <>
-      <h1> My animal lists </h1>
-      {myAnim.length > 0 &&
-
-        myAnim.map((myFunc) => <li>{myFunc}</li>)
-      }
-
+      <h1>
+        What types of fruits i have in my basket?
+      </h1>
+      <ul>
+        <li>
+          {fruits.map((fruit) => <Fruits nom={fruit} />)}
+        </li>
+      </ul>
     </>
   )
-
-
 }
-
-const animales = ["alligator", "snake", "lizard", "tiger", "lion"];
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<AnimalListes myAnim={animales} />);
+root.render(<FruitsBaskets />);
