@@ -1,22 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-function TaskOk() {
-  return <h1> DONE PERFECTLY </h1>
-}
 
-function TaskNotOk() {
-  return <h1> NOT FINISHED PERFECTLY </h1>
-}
 
-function TaskVerification(props) {
-  const isOk = props.isOk;
+function AnimalListes(props) {
+  const myAnim = props.myAnim;
+
   return (
     <>
-      {isOk ? <TaskOk /> : <TaskNotOk />}
+      <h1> My animal lists </h1>
+      {myAnim.length > 0 &&
+
+        myAnim.map((myFunc) => <li>{myFunc}</li>)
+      }
+
     </>
   )
+
+
 }
 
+const animales = ["alligator", "snake", "lizard", "tiger", "lion"];
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<TaskVerification isOk={false} />);
-root.render(<TaskVerification isOk={true} />);
+
+root.render(<AnimalListes myAnim={animales} />);
