@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 
-
-function Intro() {
-  return <h1>Je suis sultan</h1>;
-}
-
-function Garage() {
-  return (
-    <>
-      <Intro />
-      <h3>Who lives in 02400 Château THierry</h3>
-
-    </>
-  );
+class Intro extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    // return <h2>I am a {this.props.model}!</h2>;
+    return <h2> Hi name is {this.props.nom}, I live in {this.props.ville} </h2>
+  }
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
+root.render(<Intro nom="Sultan2" ville="Château ThierrY" />);
+
 
