@@ -4,22 +4,28 @@ import { useState } from 'react';
 
 
 function MyForm() {
-  const [nom, setNom] = useState("");
-  const [prenom, setPrenom] = useState("");
+  const [inputs, setInputs] = useState("");
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({ ...values, [name]: value }))
+  }
+
+
   const formSubmit = (event) => {
     event.preventDefault();
-    alert(`le nom et prenom est: ${nom} et ${prenom}`);
+    console.log(inputs);
   }
 
   return (
     <form onSubmit={formSubmit}>
       <label>
-        Votre nom
-        <input type="text" value={nom} onChange={(e) => setNom(e.target.value)} />
+        Votre nom     <input type="text" name="nomUser" value={inputs.nomUser || ""} onChange={handleChange} />
       </label>
 
       <label>
-        Votre prenom  <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+        Votre prenom  <input type="text" name="prenomUser" value={inputs.prenomUser || ""} onChange={handleChange} />
       </label>
       <input type="submit" value="submit" />
     </form>
