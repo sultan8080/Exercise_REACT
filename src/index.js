@@ -1,26 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { useState } from 'react';
 
-function Fruits(props) {
-  return <li> {props.nom}</li>
-}
 
-function FruitsBaskets() {
-  let fruits = ["ID: 1,Apple", "ID: 2, Orange", "ID: 3, Plum", "ID: 4, banana", "ID: 4, Pinappel"];
+function MyForm() {
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const formSubmit = (event) => {
+    event.preventDefault();
+    alert(`le nom et prenom est: ${nom} et ${prenom}`);
+  }
 
   return (
-    <>
-      <h1>
-        What types of fruits i have in my basket?
-      </h1>
-      <ul class="text-start">
+    <form onSubmit={formSubmit}>
+      <label>
+        Votre nom
+        <input type="text" value={nom} onChange={(e) => setNom(e.target.value)} />
+      </label>
 
-        {fruits.map((fruit) => <Fruits key={fruit.id} nom={fruit} />)}
-
-      </ul>
-    </>
+      <label>
+        Votre prenom  <input type="text" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+      </label>
+      <input type="submit" value="submit" />
+    </form>
   )
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<FruitsBaskets />);
+root.render(<MyForm />);
